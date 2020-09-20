@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "james-frontend-challenge"
+    }
+  },
+  "defaultProject": "james-frontend-challenge",
+  "cli": {
+    "analytics": false
+  }
 }
