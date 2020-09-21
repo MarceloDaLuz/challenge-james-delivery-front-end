@@ -5,16 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EstablishmentListComponent } from './components/establishment-list/establishment-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EstablishmentComponent } from './components/establishment/establishment.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     EstablishmentListComponent,
-    NavbarComponent
+    NavbarComponent,
+    EstablishmentComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

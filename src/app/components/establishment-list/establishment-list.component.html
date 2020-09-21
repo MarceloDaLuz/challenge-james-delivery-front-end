@@ -1,1 +1,24 @@
-<p>establishment-list works!</p>
+<div class="establishments-content">
+  <ul class="establishments-list">
+
+    <li *ngFor="let establishment of establishments" class="establishments-list__item establishment">
+
+      <div class="establishment__image">
+        <img src="http://placehold.it/32x32" alt="logo">
+      </div>
+
+      <div class="establishment__information data">
+        <div class="data identifier">
+          <span class="identifier__name">{{establishment.name}}</span>
+          <span class="identifier__number">{{establishment.id}}</span>
+        </div>
+
+        <div class="data address">
+          <span class="address__city">{{establishment.city}}</span>
+          <span class="address__street">{{establishment.address}}</span>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</div>

@@ -1,0 +1,80 @@
+@import "../../../color.scss";
+
+.establishments-content{
+  top: calc(80px - 5vh);
+  position: relative;
+  width: 950px;
+}
+
+ul.establishments-list{
+  list-style: none;
+  & li{
+    margin: 0 0 1rem 0;
+  }
+}
+
+.establishments-list__item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: $background-white;
+  padding: .5rem;
+  border-radius: 5px;
+
+  &.establishment .establishment__image{
+    order: 1;
+    &, img{
+      border-radius: 3px;
+    }
+  }
+
+  &.establishment .establishment__information{
+    order: 2;
+    margin-left: 1rem;
+
+    & .data{
+      &.identifier{
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+
+        & .identifier__name{
+          order:1;
+          font-weight: bold;
+        }
+
+        & .identifier__number{
+          order: 2;
+          color: $font-color--gray;
+          font-weight: bold;
+          margin-left: .3rem;
+          font-size: 10px;
+        }
+      }
+
+      &.address{
+        display: flex;
+        font-style: normal;
+        flex-direction: row;
+        justify-content: space-between;
+        color: $font-color--gray;
+
+
+
+        & > .address__street{
+          &::before{
+            content: "";
+            display: inline-block;
+            position: relative;
+            align-items: center;
+            width: 1px;
+            height: 9px;
+            left: 0;
+            background-color: $background-gray;
+            margin: 0 6px 0 6px;
+          }
+        }
+      }
+    }
+  }
+}
