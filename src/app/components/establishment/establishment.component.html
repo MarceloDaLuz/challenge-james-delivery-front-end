@@ -1,1 +1,136 @@
-<p>establishment works!</p>
+<div class="container">
+  <form class="form" action="">
+    <section class="form__introduction intro">
+      <!-- Header com imagem, nome, id -->
+      <div class="intro__button">
+        <button class="form__button form__button--back">
+          <fa-icon [icon]="iconArrowLeft"></fa-icon>
+        </button>
+      </div>
+      <div class="intro__image">
+        <img src="http://placehold.it/32x32" alt="logo">
+      </div>
+      <div class="intro__apresentation">
+        <span class="intro__apresentation__name">Nome</span>
+        <span class="intro__apresentation__id">ID</span>
+      </div>
+    </section>
+
+    <section class="form__information">
+      <h3>Informações Básicas</h3>
+
+      <div class="form__inputs">
+
+        <div class="form__input--vertical">
+          <label for="name">
+            <span>Nome</span>
+          </label>
+          <div class="input">
+            <input type="text" id="name" name="name">
+          </div>
+
+        </div>
+
+        <div class="form__input--vertical">
+          <label for="city">
+            <span>Cidade</span>
+          </label>
+          <div class="input">
+            <select name="city">
+              <option value="Curitiba">Curitiba</option>
+              <option value="Maringá" selected>Maringá</option>
+              <option value="Paranaguá">Paranaguá</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="form__input--vertical">
+          <label for="address">
+            <span>Endereço</span>
+          </label>
+          <div class="input">
+            <input type="text" id="address" name="address">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="form__financial">
+      <h3>Financeiro</h3>
+
+      <div class="form__inputs">
+        <div class="form__input--vertical">
+          <label for="bank">
+            <span>Banco</span>
+          </label>
+          <div class="input">
+            <input type="text" id="bank" name="bank">
+          </div>
+
+        </div>
+
+        <div class="form__input--vertical">
+          <label for="account-type">
+            <span>Tipo de Conta</span>
+          </label>
+          <div class="input">
+            <select name="account-type">
+              <option value="cc">Conta Corrente</option>
+              <option value="cp" selected>Conta Poupança</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="form__input--vertical">
+          <label for="identification-document">
+            <span>CPF /  CNPJ</span>
+          </label>
+          <div class="input">
+            <input type="number" id="identification-document" name="identification-document">
+          </div>
+        </div>
+
+        <div class="form__input--vertical">
+          <label for="agency">
+            <span>Agência</span>
+          </label>
+          <div class="input">
+            <input class="input--w-7" type="number" id="agency" name="agency">
+            <input class="input--w-2" type="number" id="agency-d" name="agency-d">
+          </div>
+
+        </div>
+
+        <div class="form__input--vertical">
+          <label for="account">
+            <span>Conta</span>
+          </label>
+          <div class="input">
+            <input class="input--w-7" type="number" id="account" name="account">
+            <input class="input--w-2" type="number" id="account-d" name="account-d">
+          </div>
+        </div>
+
+        <div class="form__input--vertical">
+          <label for="bank-draft">
+            <span>CPF /  CNPJ</span>
+          </label>
+          <div class="input">
+            <select name="bank-draft">
+              <option value="yes" selected>Sim</option>
+              <option value="no" >não</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="form__actions">
+      <button class="form__button form__button--submit">Salvar</button>
+    </section>
+  </form>
+</div>

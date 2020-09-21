@@ -1,24 +1,25 @@
 @import "../../../color.scss";
-
-.establishments-content{
-  top: calc(80px - 5vh);
-  position: relative;
-  width: 950px;
+:host{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $background-default;
 }
 
-ul.establishments-list{
+ul.establishments__list{
   list-style: none;
   & li{
     margin: 0 0 1rem 0;
   }
 }
 
-.establishments-list__item{
+.establishments__list__item{
   display: flex;
   flex-direction: row;
   align-items: center;
   background-color: $background-white;
-  padding: .5rem;
+  padding: 1rem;
   border-radius: 5px;
 
   &.establishment .establishment__image{
@@ -37,7 +38,7 @@ ul.establishments-list{
         display: flex;
         flex-direction: row;
         align-items: baseline;
-
+        margin-bottom: .6rem;
         & .identifier__name{
           order:1;
           font-weight: bold;

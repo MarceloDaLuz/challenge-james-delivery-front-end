@@ -10,11 +10,9 @@
   font-size: 14px;
 }
 
-body, #ng-element{
+body{
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
 }
 
 main{
@@ -23,4 +21,11 @@ main{
   flex-direction: column;
   align-items: center;
   background-color: $background-default;
+}
+
+.container{
+  display: flex;
+  width: 950px;
+  flex-direction: column;
+  margin-top: calc(80px - 5vh);
 }

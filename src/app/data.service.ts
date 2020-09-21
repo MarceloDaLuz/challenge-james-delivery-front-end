@@ -10,6 +10,21 @@ export class DataService {
   constructor(private httpClient: HttpClient) { }
 
   public getEstablishments(){
-    return this.httpClient.get(this.REST_API);
+
+    const localEstablishments = localStorage.getItem('establishments')
+
+    if(localEstablishments){
+      return JSON.parse(localEstablishments);
+
+    }else{
+      return this
+        .httpClient
+        .get(this.REST_API)
+        .subscribe((data)=> {
+          localStorage.setItem('establishments', JSON.stringify(data))
+          return data;
+        });
+    }
+
   }
 }

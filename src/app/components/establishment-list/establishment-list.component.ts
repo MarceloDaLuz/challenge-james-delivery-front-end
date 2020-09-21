@@ -13,19 +13,15 @@ export class EstablishmentListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this
+    let data = this
       .api
-      .getEstablishments()
-      .subscribe((data: any[]) => {
-
-        //remove a cidade do fake address
-        this.establishments = data.map((establishment) => {
-          let address = establishment.address.split(',');
-          establishment.city = address[1]; //city
-          establishment.address = address.filter(addressData => addressData != establishment.city).join(',');
-          return establishment;
-        });
-      });
+      .getEstablishments();
+    this.establishments = data.map((establishment) => {
+      let address = establishment.address.split(',');
+      establishment.city = address[1]; //city
+      establishment.address = address.filter((addressData: any[]) => addressData != establishment.city).join(',');
+      return establishment;
+    });
   }
 
 }

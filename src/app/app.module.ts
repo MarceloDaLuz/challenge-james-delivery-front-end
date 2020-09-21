@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { EstablishmentListComponent } from './components/establishment-list/establishment-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EstablishmentComponent } from './components/establishment/establishment.component'
+import { EstablishmentComponent } from './components/establishment/establishment.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EstablishmentComponent } from './components/establishment/establishment
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
