@@ -10,12 +10,10 @@ export class EstablishmentListComponent implements OnInit {
 
   establishments = [];
 
-  constructor(private api: DataService, private router: Router ) {
-    this.establishments = this.api.getEstablishments();
-  }
+  constructor(private api: DataService, private router: Router ) {    }
 
   ngOnInit(): void {
-
+    this.api.getAll().then(data => this.establishments = data);
   }
 
   openEstablishment(id: string){

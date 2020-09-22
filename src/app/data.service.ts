@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +12,7 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public connectDatabase(){
-    if(!localStorage.getItem(this.KEY_LOCAL_DB)){
-      this
-        .httpClient
-        .get(this.REST_API,  {responseType: 'json'})
-        .subscribe(
-          (data:any) => {
-            let localEstablishments = data.map((est: any) => this.formatEstablishment(est));
-            localStorage.setItem(this.KEY_LOCAL_DB, JSON.stringify(localEstablishments));
-            console.log('termino')
-          },
-          (err) => console.log('Estabelicimentos não foram encontrados'));
-    }
-  }
+
 
   /**
    * @function formatEstablishment
@@ -51,27 +39,47 @@ export class DataService {
    * @function getEstablishments
    * @description a função deve pegar os dados que estão em "establishment" no banco de dados
    */
-  public getEstablishments(){
-    let localEstablishments:any = localStorage.getItem(this.KEY_LOCAL_DB);
-    if(!localEstablishments) return;
-    return JSON.parse(localEstablishments);
+  async getAll(){
+    let establishments:any;
+    await this
+      .connectDatabase()
+      .then((data) => establishments = data);
+    return establishments;
   }
 
-  public getEstablishment(id: string){
-    const localDb = JSON.parse(localStorage.getItem(this.KEY_LOCAL_DB));
-
-    if(!localDb) return false;
-
-    return localDb.find((item: any) => item.id === id);
-
+  async getById(id: string){
+    let establishment:any;
+    await this
+      .connectDatabase()
+      .then(data => {
+        establishment = data.find((item: any) => item.id === id);
+      });
+    return establishment;
   }
 
-  public updateEstablishment(establishment){
-    const localDb = JSON.parse(localStorage.getItem(this.KEY_LOCAL_DB));
-    if(!localDb) return false;
-    let _establishment = localDb.find((item: any) => item.id === establishment.id);
-    if(!_establishment) return false;
-    localDb[_establishment.index] = establishment;
-    localStorage.setItem(this.KEY_LOCAL_DB, JSON.stringify(localDb))
+  async updateEstablishment(establishment:any){
+    let completed:boolean = false;
+    await this
+      .connectDatabase()
+      .then(data => {
+        let _establishment = data.find((item: any) => item.id === establishment.id);
+        if(!_establishment) return false;
+        data[_establishment.index] = establishment;
+        localStorage.setItem(this.KEY_LOCAL_DB, JSON.stringify(data));
+        completed = true;
+      })
+    return completed;
+  }
+
+  async connectDatabase(){
+    let establishmentsData = localStorage.getItem(this.KEY_LOCAL_DB)
+    if(!establishmentsData){
+      let establishments: any = await this.httpClient.get(this.REST_API,  {responseType: 'json'}).toPromise();
+      establishmentsData = establishments.map((establishment:any) => this.formatEstablishment(establishment));
+      establishmentsData = JSON.stringify(establishmentsData);
+      localStorage.setItem(this.KEY_LOCAL_DB, establishmentsData);
+    }
+
+    return JSON.parse(establishmentsData);
   }
 }
