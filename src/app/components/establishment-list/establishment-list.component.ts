@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from '../../data.service';
 @Component({
   selector: 'app-establishment-list',
@@ -9,19 +10,17 @@ export class EstablishmentListComponent implements OnInit {
 
   establishments = [];
 
-  constructor(private api: DataService) { }
+  constructor(private api: DataService, private router: Router ) {
+    this.establishments = this.api.getEstablishments();
+  }
 
   ngOnInit(): void {
 
-    let data = this
-      .api
-      .getEstablishments();
-    this.establishments = data.map((establishment) => {
-      let address = establishment.address.split(',');
-      establishment.city = address[1]; //city
-      establishment.address = address.filter((addressData: any[]) => addressData != establishment.city).join(',');
-      return establishment;
-    });
   }
 
+  openEstablishment(id: string){
+    if(!id) return;
+
+    this.router.navigate(['establishment', id]);
+  }
 }

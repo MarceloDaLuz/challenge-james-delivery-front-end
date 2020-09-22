@@ -21,6 +21,7 @@ ul.establishments__list{
   background-color: $background-white;
   padding: 1rem;
   border-radius: 5px;
+  cursor: pointer;
 
   &.establishment .establishment__image{
     order: 1;

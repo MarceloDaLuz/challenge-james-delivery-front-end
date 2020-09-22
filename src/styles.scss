@@ -25,7 +25,8 @@ main{
 
 .container{
   display: flex;
-  width: 950px;
+  max-width: 950px;
+  width: min(950px, 720px);
   flex-direction: column;
   margin-top: calc(80px - 5vh);
 }

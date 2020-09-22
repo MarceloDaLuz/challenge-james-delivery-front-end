@@ -1,7 +1,7 @@
 <div class="container">
   <ul class="establishments__list">
 
-    <li *ngFor="let establishment of establishments" class="establishments__list__item establishment">
+    <li *ngFor="let establishment of establishments" class="establishments__list__item establishment" (click)="openEstablishment(establishment.id)">
 
       <div class="establishment__image">
         <img src="http://placehold.it/32x32" alt="logo">
@@ -10,7 +10,7 @@
       <div class="establishment__information data">
         <div class="data identifier">
           <span class="identifier__name">{{establishment.name}}</span>
-          <span class="identifier__number">{{establishment.id}}</span>
+          <span class="identifier__number">{{establishment.index}}</span>
         </div>
 
         <div class="data address">
@@ -18,6 +18,7 @@
           <span class="address__street">{{establishment.address}}</span>
         </div>
       </div>
+
     </li>
 
   </ul>

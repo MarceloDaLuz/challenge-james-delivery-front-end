@@ -1,18 +1,18 @@
 <div class="container">
-  <form class="form" action="">
+  <form [formGroup]="establishmentForm" (ngSubmit)="onSubmit(establishmentForm.value)" class="form">
     <section class="form__introduction intro">
       <!-- Header com imagem, nome, id -->
       <div class="intro__button">
-        <button class="form__button form__button--back">
+        <button type="button" (click)="onBack()" class="form__button form__button--back">
           <fa-icon [icon]="iconArrowLeft"></fa-icon>
         </button>
       </div>
       <div class="intro__image">
-        <img src="http://placehold.it/32x32" alt="logo">
+        <img [src]="establishment.picture" alt="logo">
       </div>
       <div class="intro__apresentation">
-        <span class="intro__apresentation__name">Nome</span>
-        <span class="intro__apresentation__id">ID</span>
+        <span class="intro__apresentation__name">{{establishment.name}}</span>
+        <span class="intro__apresentation__id">ID:{{establishment.id}}</span>
       </div>
     </section>
 
@@ -26,7 +26,7 @@
             <span>Nome</span>
           </label>
           <div class="input">
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name"  formControlName="name">
           </div>
 
         </div>
@@ -36,11 +36,7 @@
             <span>Cidade</span>
           </label>
           <div class="input">
-            <select name="city">
-              <option value="Curitiba">Curitiba</option>
-              <option value="Maringá" selected>Maringá</option>
-              <option value="Paranaguá">Paranaguá</option>
-            </select>
+            <input type="text" id="city" name="city"  formControlName="city">
           </div>
 
         </div>
@@ -50,7 +46,7 @@
             <span>Endereço</span>
           </label>
           <div class="input">
-            <input type="text" id="address" name="address">
+            <input type="text" id="address" name="address" formControlName="address">
           </div>
 
         </div>
@@ -66,7 +62,7 @@
             <span>Banco</span>
           </label>
           <div class="input">
-            <input type="text" id="bank" name="bank">
+            <input type="text" id="bank" name="bank" formControlName="bank">
           </div>
 
         </div>
@@ -76,7 +72,7 @@
             <span>Tipo de Conta</span>
           </label>
           <div class="input">
-            <select name="account-type">
+            <select name="account-type" formControlName="account_type">
               <option value="cc">Conta Corrente</option>
               <option value="cp" selected>Conta Poupança</option>
             </select>
@@ -89,7 +85,7 @@
             <span>CPF /  CNPJ</span>
           </label>
           <div class="input">
-            <input type="number" id="identification-document" name="identification-document">
+            <input type="number" id="identification-document" name="identification-document" formControlName="identification_document">
           </div>
         </div>
 
@@ -98,8 +94,8 @@
             <span>Agência</span>
           </label>
           <div class="input">
-            <input class="input--w-7" type="number" id="agency" name="agency">
-            <input class="input--w-2" type="number" id="agency-d" name="agency-d">
+            <input class="input--w-7" type="number" id="agency" name="agency" formControlName="agency">
+            <input class="input--w-2" type="number" id="agency-d" name="agency-d" formControlName="agency_d">
           </div>
 
         </div>
@@ -109,17 +105,17 @@
             <span>Conta</span>
           </label>
           <div class="input">
-            <input class="input--w-7" type="number" id="account" name="account">
-            <input class="input--w-2" type="number" id="account-d" name="account-d">
+            <input class="input--w-7" type="number" id="account" name="account" formControlName="account">
+            <input class="input--w-2" type="number" id="account-d" name="account-d" formControlName="account_d">
           </div>
         </div>
 
         <div class="form__input--vertical">
           <label for="bank-draft">
-            <span>CPF /  CNPJ</span>
+            <span>Saque automatico?</span>
           </label>
           <div class="input">
-            <select name="bank-draft">
+            <select name="bank-draft" formControlName="bank_draft">
               <option value="yes" selected>Sim</option>
               <option value="no" >não</option>
             </select>
@@ -130,7 +126,7 @@
     </section>
 
     <section class="form__actions">
-      <button class="form__button form__button--submit">Salvar</button>
+      <button class="form__button form__button--submit" type="submit">Salvar</button>
     </section>
   </form>
 </div>
