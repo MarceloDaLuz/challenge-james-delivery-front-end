@@ -12,16 +12,14 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) {}
 
-
-
   /**
    * @function formatEstablishment
    * @param establishment
-   * @description a função deve modelar o dada conforme os requistos, verificar no figma!
+   * @description modelar o dado conforme os requistos/exemplos no figma!
    */
   private formatEstablishment(establishment: any){
 
-    let address = establishment.address.split(',');
+
     establishment.bank = establishment.hasOwnProperty('bank') ? establishment.bank : '';
     establishment.account_type = establishment.hasOwnProperty('account_type') ? establishment.account_type : '';
     establishment.identification_document = establishment.hasOwnProperty('identification_document') ? establishment.identification_document : '';
@@ -30,14 +28,15 @@ export class DataService {
     establishment.account = establishment.hasOwnProperty('account') ? establishment.account : '';
     establishment.account_d = establishment.hasOwnProperty('account_d') ? establishment.account_d : '';
     establishment.bank_draft = establishment.hasOwnProperty('bank_draft') ? establishment.bank_draft : '';
-    establishment.city = address[1]; //city
+    let address = establishment.address.split(',');
+    establishment.city = address[1];
     establishment.address = address.filter((addressData: any[]) => addressData != establishment.city).join(',');
-    return establishment
+    return establishment;
   }
 
   /**
    * @function getEstablishments
-   * @description a função deve pegar os dados que estão em "establishment" no banco de dados
+   * @description pegar os dados que estão em "establishments" no banco de dados
    */
   async getAll(){
     let establishments:any;
@@ -46,7 +45,11 @@ export class DataService {
       .then((data) => establishments = data);
     return establishments;
   }
-
+  /**
+   * @function getById
+   * @param id
+   * @description pegar o item no banco com base no id
+   */
   async getById(id: string){
     let establishment:any;
     await this
@@ -57,6 +60,11 @@ export class DataService {
     return establishment;
   }
 
+  /**
+   * @function updateEstablishment
+   * @param establishment
+   * @description atualizar o establishment
+   */
   async updateEstablishment(establishment:any){
     let completed:boolean = false;
     await this
@@ -70,9 +78,12 @@ export class DataService {
       })
     return completed;
   }
-
+  /**
+   * @function connectDatabase
+   * @description conectar ao banco/api
+   */
   async connectDatabase(){
-    let establishmentsData = localStorage.getItem(this.KEY_LOCAL_DB)
+    let establishmentsData = localStorage.getItem(this.KEY_LOCAL_DB);
     if(!establishmentsData){
       let establishments: any = await this.httpClient.get(this.REST_API,  {responseType: 'json'}).toPromise();
       establishmentsData = establishments.map((establishment:any) => this.formatEstablishment(establishment));

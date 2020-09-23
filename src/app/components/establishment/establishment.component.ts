@@ -55,4 +55,11 @@ export class EstablishmentComponent implements OnInit {
     this.api.updateEstablishment(establishmentData).then(() => this.router.navigate(['home']));
   }
 
+  onKeyUp(e:any){
+    let inputValue = e.target.value;
+    console.log(inputValue);
+    if(!/^\d*\.?\d*$/.test(inputValue)){
+      e.target.value = inputValue.replace(/^\d*\.?\d*$/,'')
+    }
+  }
 }

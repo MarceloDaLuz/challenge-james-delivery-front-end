@@ -1,11 +1,11 @@
 @import "../../../color.scss";
 
 :host{
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: $background-default;
+  flex: 1;
 }
 
 .form{
@@ -17,11 +17,18 @@
   width: min(950px, 720px);
   height: min(600px, calc(100vh - 95px));
 
+  @media (max-width: 500px) {
+    margin: 1rem;
+    height: min-content;
+    width: 100%;
+  }
+
   & section{
     margin-bottom: 2rem;
 
     & h3{
       border-bottom: 1px solid $background-gray;
+      padding-bottom: 18px;
       margin-bottom: 1.4rem;
     }
   }
@@ -75,10 +82,14 @@
   & .form__financial{
     margin-bottom: 3rem;
   }
+
   & .form__actions{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    @media (max-width: 500px) {
+      justify-content: center;
+    }
   }
 
   & .form__inputs{
@@ -96,6 +107,9 @@
 
       & label{
 
+        position: relative;
+        bottom: 7px;
+
         & > span{
          font-weight: bold;
        }
@@ -109,12 +123,43 @@
 
         & input, select{
           border: 1px solid $background-gray;
-          padding: .6rem;
+          padding: 12px 15px;
           border-radius: 5px;
           width: 100%;
           background-color: $background-white;
-          outline: none;
+          border: 1px solid $input-background-white;
+          outline-color: $input-outline-white--darkness;
         }
+
+        & select{
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat;
+          background-position: 176px;
+
+          & option{
+            border: 1px solid $background-gray;
+            padding: 12px 15px;
+            border-radius: 5px;
+          }
+
+          &:after {
+            content:"";
+            width:0;
+            height:0;
+            border:5px solid transparent;
+            border-color:black transparent transparent transparent;
+            position:absolute;
+            top:9px;
+            right:6px;
+          }
+
+          @media(max-width: 500px){
+            background-position: 300px;
+          }
+        }
+
 
         & input.input--w-7{
           width: 70%;
@@ -125,6 +170,9 @@
         }
       }
 
+      @media (max-width: 500px) {
+        width: 100%;
+      }
     }
   }
 

@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   background-color: $background-default;
+  flex: 1;
 }
 
 ul.establishments__list{
@@ -14,24 +15,42 @@ ul.establishments__list{
   & li{
     margin: 0 0 1rem 0;
   }
+
+  @media (max-width: 500px){
+    width: 80%;
+  }
 }
 
 .establishments__list__item{
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: $background-white;
+
   padding: 1rem;
-  border-radius: 5px;
+  max-height: 90px;
+
   cursor: pointer;
+
+  border-radius: 5px;
+  background-color: $background-white;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 
   &:hover{
     background-color:$background-white--hover;
+    box-shadow: 0 1px 1px rgb(0, 0, 0);
+  }
+
+  &:active{
+    background-color:$background-white--hover;
+    box-shadow: 4px 3px 1px rgba(0, 0, 0, 0.5);
   }
 
   &.establishment .establishment__image{
     order: 1;
+
     &, img{
+      min-width: 74px;
+      min-height: 74px;
       border-radius: 3px;
     }
   }
@@ -49,6 +68,7 @@ ul.establishments__list{
         & .identifier__name{
           order:1;
           font-weight: bold;
+          font-size: 18px;
         }
 
         & .identifier__number{
@@ -56,7 +76,7 @@ ul.establishments__list{
           color: $font-color--gray;
           font-weight: bold;
           margin-left: .3rem;
-          font-size: 10px;
+          font-size: 14px;
         }
       }
 
@@ -67,9 +87,8 @@ ul.establishments__list{
         justify-content: space-between;
         color: $font-color--gray;
 
-
-
         & > .address__street{
+
           &::before{
             content: "";
             display: inline-block;
@@ -80,7 +99,15 @@ ul.establishments__list{
             left: 0;
             background-color: $background-gray;
             margin: 0 6px 0 6px;
+
+            @media (max-width: 500px){
+              display: none;
+            }
           }
+        }
+
+        @media (max-width: 500px){
+          flex-wrap: wrap;
         }
       }
     }

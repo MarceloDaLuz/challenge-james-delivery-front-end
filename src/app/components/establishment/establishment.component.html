@@ -1,4 +1,5 @@
 <div class="container">
+
   <form [formGroup]="establishmentForm" (ngSubmit)="onSubmit(establishmentForm.value)" class="form">
     <section class="form__introduction intro">
       <!-- Header com imagem, nome, id -->
@@ -85,7 +86,7 @@
             <span>CPF /  CNPJ</span>
           </label>
           <div class="input">
-            <input type="number" id="identification-document" name="identification-document" formControlName="identification_document">
+            <input type="text" mask="000.000.000-00||00.000.000/0000-00" id="identification-document" name="identification-document" formControlName="identification_document">
           </div>
         </div>
 
@@ -129,4 +130,5 @@
       <button class="form__button form__button--submit" type="submit">Salvar</button>
     </section>
   </form>
+
 </div>

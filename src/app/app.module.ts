@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { EstablishmentComponent } from './components/establishment/establishment.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
