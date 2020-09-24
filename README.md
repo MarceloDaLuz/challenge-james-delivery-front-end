@@ -12,4 +12,4 @@ Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) versão
 
 ## Live demo
 
-Disponibizei demonstração [aqui](https://marcelo-james-challenge.netlify.app/) 📡.
+Disponibilizei demonstração [aqui](https://marcelo-james-challenge.netlify.app/) 📡.
